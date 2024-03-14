@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike Shop</title>
+    <h2>{{bike}}</h2>
+</head>
+<body>
+    <p>frame: {{bike.frame}}</p>
+    <p>seat: {{bike.seat}}</p>
+    <p>tires: {{bike.tire}}</p>
+    <p>basket: {% if bike.has_basket %}yes{% else %}no{% endif %}</p>
+    <p>description: {{bike.description}}</p>
+    <p>&nbsp;</p>
+    <p><strong>{{ error_message }}</strong></p>
+    <p><b>If you want to order the bike, fill the form below:</b></p>
+        <form  method='post' action="{% 'BikeView' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">order</button>
+    </form>
+</body>
+</html>
